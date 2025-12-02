@@ -1,1 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>DriveLight Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@500;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: linear-gradient(150deg, #070e2a 0%, #0d1b3f 55%, #0a1636 100%);
+      --card: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+      --accent: #ff6ac1;
+      --accent-2: #7cd4ff;
+      --text: #f4f7ff;
+      --muted: #a9b3c9;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --radius: 18px;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      background-size: cover;
+      animation: hueShift 18s ease-in-out infinite alternate;
+      color: var(--text);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 14px 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(120deg, #0b1737, #131f47);
+      border-bottom: 1px solid rgba(124, 212, 255, 0.25);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 18px rgba(124, 246, 230, 0.6);
+    }
+
+    .menu {
+      position: relative;
+      margin-left: auto;
+    }
+
+    .menu summary {
+      list-style: none;
+      cursor: pointer;
+      border-radius: 14px;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, rgba(255, 106, 193, 0.95), rgba(124, 212, 255, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #0a0d1c;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+    }
+
+    .menu summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .menu-icon {
+      width: 16px;
+      height: 12px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .menu-icon span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #0c0f2a;
+      border-radius: 999px;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-icon span:nth-child(1) { top: 0; }
+    .menu-icon span:nth-child(2) { top: 5px; }
+    .menu-icon span:nth-child(3) { top: 10px; }
+
+    details[open] .menu-icon span:nth-child(1) {
+      transform: translateY(5px) rotate(45deg);
+    }
+
+    details[open] .menu-icon span:nth-child(2) {
+      opacity: 0;
+    }
+
+    details[open] .menu-icon span:nth-child(3) {
+      transform: translateY(-5px) rotate(-45deg);
+    }
+
+    nav {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      background: linear-gradient(145deg, rgba(7, 13, 32, 0.98), rgba(18, 28, 60, 0.98));
+      border-radius: 16px;
+      border: 1px solid rgba(124, 212, 255, 0.3);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      display: none;
+      gap: 10px;
+      min-width: 220px;
+    }
+
+    details[open] nav {
+      display: grid;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(124, 212, 255, 0.08));
+      border: 1px solid rgba(124, 212, 255, 0.2);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #eaf6ff;
+    }
+
+    nav a:hover {
+      background: linear-gradient(120deg, rgba(124, 212, 255, 0.2), rgba(255, 106, 193, 0.22));
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.26);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      align-items: stretch;
+      padding: 22px 5vw 36px;
+      gap: 18px;
+    }
+
+    .hero-text {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(13, 17, 52, 0.95), rgba(19, 36, 92, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      display: grid;
+      gap: 16px;
+      isolation: isolate;
+      min-height: 320px;
+      animation: fadeGlow 16s ease-in-out infinite alternate;
+    }
+
+    .hero-text::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1400&q=80') center/cover;
+      opacity: 0.38;
+      z-index: 0;
+      filter: saturate(1.2);
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 6px;
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tagline {
+      position: relative;
+      z-index: 1;
+      color: #dbe7ff;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      animation: glowPulse 3.5s ease-in-out infinite;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      color: #0a0d1c;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff6ac1, #7cd4ff);
+      box-shadow: 0 18px 42px rgba(255, 106, 193, 0.4);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, rgba(255, 106, 193, 0.16), rgba(124, 212, 255, 0.2));
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.01);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 14px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .hero-card img {
+      width: 100%;
+      border-radius: calc(var(--radius) - 6px);
+      display: block;
+      object-fit: cover;
+      height: 100%;
+      min-height: 260px;
+      filter: saturate(1.1);
+    }
+
+    .badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(10, 13, 28, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 30px 5vw;
+    }
+
+    .section h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .section p.subtitle {
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 18px;
+    }
+
+    .pill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .glow-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(124, 246, 230, 0.7);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .price-card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      min-height: 230px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(170deg, rgba(8, 14, 34, 0.75), rgba(9, 15, 38, 0.45));
+      z-index: 0;
+    }
+
+    .price-card::after {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      border-radius: calc(var(--radius) - 2px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      mix-blend-mode: screen;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    .price-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255, 106, 193, 0.9), rgba(124, 212, 255, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #071028;
+      z-index: 1;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .price-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 255, 255, 0.32);
+    }
+
+    .price-card h3,
+    .price,
+    .price-card ul,
+    .price-meta {
+      position: relative;
+      z-index: 1;
+    }
+
+    .price-card h3 {
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .price-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(124, 212, 255, 0.25));
+      color: #0b1029;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .price-card ul {
+      list-style: none;
+      color: #e7eeff;
+      display: grid;
+      gap: 6px;
+      font-size: 0.95rem;
+      text-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .price-actions {
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .see-more {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 200px;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+      transition: transform 0.4s ease;
+      animation: rise 0.9s ease forwards;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.2);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+      align-items: start;
+    }
+
+    form {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-size: 1rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(124, 246, 230, 0.15);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    footer {
+      padding: 24px 5vw 50px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .floating-blur {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 111, 158, 0.2), transparent 60%);
+      filter: blur(60px);
+      z-index: -1;
+      animation: float 12s ease-in-out infinite alternate;
+    }
+
+    .floating-blur.two {
+      background: radial-gradient(circle, rgba(124, 246, 230, 0.2), transparent 60%);
+      top: 40%;
+      right: 15%;
+      animation-duration: 14s;
+    }
+
+    @keyframes hueShift {
+      from { background-position: 0% 50%; }
+      to { background-position: 100% 50%; }
+    }
+
+    @keyframes fadeGlow {
+      from { box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45); }
+      to { box-shadow: 0 22px 48px rgba(0, 0, 0, 0.55); }
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0px) translateX(0px);
+      }
+      to {
+        transform: translateY(-18px) translateX(10px);
+      }
+    }
+
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 0 rgba(255, 255, 255, 0.18); }
+      50% { text-shadow: 0 4px 22px rgba(124, 212, 255, 0.6); }
+      100% { text-shadow: 0 0 0 rgba(255, 255, 255, 0.18); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: rise 0.9s ease forwards;
+    }
+
+    .fade-up.delay-1 { animation-delay: 0.2s; }
+    .fade-up.delay-2 { animation-delay: 0.35s; }
+    .fade-up.delay-3 { animation-delay: 0.5s; }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 16px 5vw;
+      }
+
+      .hero-card img {
+        min-height: 220px;
+      }
+
+      nav {
+        gap: 10px;
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-blur" style="top: 10%; left: 10%;"></div>
+  <div class="floating-blur two"></div>
+  <header>
+    <div class="brand"><span></span> DriveLight</div>
+    <details class="menu">
+      <summary>
+        <div class="menu-icon">
+          <span></span><span></span><span></span>
+        </div>
+        Menu
+      </summary>
+      <nav>
+        <a href="#story">About</a>
+        <a href="#pricing">Packages</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </details>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text fade-up">
+      <h1>DriveLight</h1>
+      <div class="hero-tagline">Neon car stories, shot bold.</div>
+      <div class="cta-row">
+        <button class="btn btn-primary" onclick="document.querySelector('#pricing').scrollIntoView({behavior: 'smooth'});">Explore Packages</button>
+        <button class="btn btn-secondary" onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'});">Book a Shoot</button>
+      </div>
+    </div>
+    <div class="hero-card fade-up delay-2">
+      <div class="badge"><span class="glow-dot"></span>Night shoot available</div>
+      <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1400&q=80" alt="Car photography" />
+    </div>
+  </section>
+
+  <section id="story" class="section fade-up delay-1">
+    <h2>Built for cars that deserve the spotlight.</h2>
+    <p class="subtitle">Deep contrast, clean lines, and motion that feels alive.</p>
+    <div class="pill-grid">
+      <div class="pill"><span class="glow-dot"></span> Studio + outdoor options</div>
+      <div class="pill"><span class="glow-dot"></span> Rolling and static shots</div>
+      <div class="pill"><span class="glow-dot"></span> Social + print ready exports</div>
+      <div class="pill"><span class="glow-dot"></span> Same-week delivery</div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section fade-up delay-2">
+    <h2>Signature packages</h2>
+    <p class="subtitle">Six fast picks. Custom add-ons available anytime.</p>
+    <div class="pricing-grid">
+      <div class="price-card popular" style="background-image: url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80');">
+        <div class="price-badge">Most popular</div>
+        <h3>Night Glow</h3>
+        <div class="price">$349</div>
+        <div class="price-meta">Neon + light painting</div>
+        <ul>
+          <li>45 min downtown</li>
+          <li>Neon + light painting</li>
+          <li>12 finished edits</li>
+        </ul>
+        <div class="price-actions">
+          <button class="btn btn-primary">Book now</button>
+        </div>
+      </div>
+      <div class="price-card" style="background-image: url('https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80');">
+        <h3>Urban Quick</h3>
+        <div class="price">$199</div>
+        <div class="price-meta">City set • 30 min</div>
+        <ul>
+          <li>One hero location</li>
+          <li>5 cinematic edits</li>
+          <li>Delivery in 72 hrs</li>
+        </ul>
+        <div class="price-actions">
+          <button class="btn btn-secondary">Book now</button>
+        </div>
+      </div>
+      <div class="price-card" style="background-image: url('https://images.unsplash.com/photo-1502877828070-33b167ad6860?auto=format&fit=crop&w=1200&q=80');">
+        <h3>Track Day</h3>
+        <div class="price">$499</div>
+        <div class="price-meta">Action + pit lane</div>
+        <ul>
+          <li>2 hours on track</li>
+          <li>Rolling + static mix</li>
+          <li>18 performance edits</li>
+        </ul>
+        <div class="price-actions">
+          <button class="btn btn-secondary">Book now</button>
+        </div>
+      </div>
+      <div class="price-card" style="background-image: url('https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=1200&q=80');">
+        <h3>Collector</h3>
+        <div class="price">$650</div>
+        <div class="price-meta">Garage + studio vibe</div>
+        <ul>
+          <li>Styled in your garage</li>
+          <li>Studio-grade lighting</li>
+          <li>20 retouched edits</li>
+        </ul>
+        <div class="price-actions">
+          <button class="btn btn-secondary">Book now</button>
+        </div>
+      </div>
+      <div class="price-card" style="background-image: url('https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=80');">
+        <h3>Sunset Cruise</h3>
+        <div class="price">$279</div>
+        <div class="price-meta">Golden hour glow</div>
+        <ul>
+          <li>Sunset coast location</li>
+          <li>10 warm edits</li>
+          <li>Drone optional</li>
+        </ul>
+        <div class="price-actions">
+          <button class="btn btn-secondary">Book now</button>
+        </div>
+      </div>
+      <div class="price-card" style="background-image: url('https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1200&q=80');">
+        <h3>Showcase</h3>
+        <div class="price">$820</div>
+        <div class="price-meta">Full brand story</div>
+        <ul>
+          <li>Half-day multi-stop</li>
+          <li>30 polished edits</li>
+          <li>Short social reel</li>
+        </ul>
+        <div class="price-actions">
+          <button class="btn btn-secondary">Book now</button>
+        </div>
+      </div>
+    </div>
+    <div class="see-more">
+      <button class="btn btn-secondary">See more packages</button>
+    </div>
+  </section>
+
+  <section id="gallery" class="section fade-up delay-3">
+    <h2>Gallery highlights</h2>
+    <p class="subtitle">Chrome, motion, and color that stop the scroll.</p>
+    <div class="gallery-grid">
+      <div class="gallery-card"><img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80" alt="Car closeup" /></div>
+      <div class="gallery-card"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Car in garage" /></div>
+      <div class="gallery-card"><img src="https://images.unsplash.com/photo-1502877828070-33b167ad6860?auto=format&fit=crop&w=1200&q=80" alt="Car racing" /></div>
+    </div>
+  </section>
+
+  <section id="contact" class="section fade-up">
+    <h2>Lock in the drive</h2>
+    <p class="subtitle">Tell us the car, the mood, and the location.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="pill" style="margin-bottom: 12px;"><span class="glow-dot"></span> Responses within 24 hours</div>
+        <div class="pill" style="margin-bottom: 12px;"><span class="glow-dot"></span> Serving NJ, NY, CT, and on-location</div>
+        <div class="pill"><span class="glow-dot"></span> Secure online booking</div>
+      </div>
+      <form>
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div>
+          <label for="contact">Email or phone</label>
+          <input type="text" id="contact" name="contact" placeholder="you@example.com / (555) 555-1234" required />
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="What are we shooting?" required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Send message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    © 2024 DriveLight Automotive Photography
+  </footer>
+</body>
+</html>
