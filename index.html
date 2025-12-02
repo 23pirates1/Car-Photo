@@ -336,6 +336,8 @@
       gap: 14px;
       overflow: hidden;
       isolation: isolate;
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
 
     .story-card::before {
@@ -471,6 +473,18 @@
       width: fit-content;
       position: relative;
       z-index: 1;
+    }
+
+    .story-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.48);
+    }
+
+    .story-card:active,
+    .story-card.tapped {
+      transform: translateY(-2px) scale(1.012);
+      box-shadow: 0 20px 52px rgba(0, 0, 0, 0.46);
+      border-color: rgba(255, 255, 255, 0.2);
     }
 
     .pill {
@@ -691,16 +705,9 @@
       opacity: 1;
     }
 
-    .gallery-card:active,
-    .gallery-card.tapped {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.45);
-      border-color: rgba(255, 255, 255, 0.12);
-    }
-
-    .gallery-card:active img,
-    .gallery-card.tapped img {
-      transform: scale(1.04);
+    .gallery-card:active {
+      transform: translateY(-2px) scale(1);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.42);
     }
 
     .contact-grid {
@@ -1057,7 +1064,7 @@
       };
 
       addTapFeedback('.price-card', 'tapped');
-      addTapFeedback('.gallery-card', 'tapped');
+      addTapFeedback('.story-card', 'tapped');
     })();
   </script>
 </body>
