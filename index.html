@@ -12,8 +12,8 @@
   />
   <style>
     :root {
-      --bg: linear-gradient(150deg, #070e2a 0%, #0d1b3f 55%, #0a1636 100%);
-      --card: linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+      --bg: linear-gradient(145deg, #203a6c 0%, #2a4d92 45%, #23437d 100%);
+      --card: linear-gradient(150deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
       --accent: #ff6ac1;
       --accent-2: #7cd4ff;
       --text: #f4f7ff;
@@ -49,9 +49,10 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      background: linear-gradient(120deg, #0b1737, #131f47);
-      border-bottom: 1px solid rgba(124, 212, 255, 0.25);
-      backdrop-filter: blur(14px);
+      background: linear-gradient(130deg, #0f214a, #1c3570);
+      border-bottom: 1px solid rgba(124, 212, 255, 0.4);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
     .brand {
@@ -77,26 +78,33 @@
     .menu {
       position: relative;
       margin-left: auto;
+      filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.35));
     }
 
     .menu summary {
       list-style: none;
       cursor: pointer;
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 12px 16px;
-      background: linear-gradient(135deg, rgba(255, 106, 193, 0.95), rgba(124, 212, 255, 0.98));
-      border: 1px solid rgba(255, 255, 255, 0.78);
+      background: linear-gradient(135deg, #ffb2e4, #9ae1ff);
+      border: 1px solid rgba(255, 255, 255, 0.95);
       display: inline-flex;
       align-items: center;
       gap: 10px;
       color: #0a0d1c;
       font-weight: 800;
       letter-spacing: 0.02em;
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 18px 42px rgba(255, 255, 255, 0.25), 0 12px 34px rgba(0, 0, 0, 0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .menu summary::-webkit-details-marker {
       display: none;
+    }
+
+    .menu summary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 50px rgba(255, 255, 255, 0.28), 0 16px 36px rgba(0, 0, 0, 0.4);
     }
 
     .menu-icon {
@@ -136,37 +144,42 @@
       position: absolute;
       top: calc(100% + 12px);
       right: 0;
-      background: linear-gradient(145deg, rgba(7, 13, 32, 0.98), rgba(18, 28, 60, 0.98));
-      border-radius: 16px;
-      border: 1px solid rgba(124, 212, 255, 0.3);
-      box-shadow: var(--shadow);
+      background: linear-gradient(145deg, rgba(19, 34, 78, 0.95), rgba(33, 58, 112, 0.95));
+      border-radius: 18px;
+      border: 1px solid rgba(124, 212, 255, 0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
       padding: 14px;
       display: none;
       gap: 10px;
-      min-width: 220px;
+      min-width: 240px;
+      backdrop-filter: blur(14px);
+      align-items: stretch;
+      flex-direction: column;
     }
 
     details[open] nav {
-      display: grid;
+      display: flex;
     }
 
     nav a {
       color: #fff;
       text-decoration: none;
-      padding: 10px 12px;
+      padding: 11px 12px;
       border-radius: 12px;
       transition: all 0.3s ease;
-      background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(124, 212, 255, 0.08));
-      border: 1px solid rgba(124, 212, 255, 0.2);
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.32), rgba(124, 212, 255, 0.28));
+      border: 1px solid rgba(255, 255, 255, 0.55);
       font-weight: 700;
       letter-spacing: 0.01em;
-      color: #eaf6ff;
+      color: #0d1230;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      text-align: center;
     }
 
     nav a:hover {
-      background: linear-gradient(120deg, rgba(124, 212, 255, 0.2), rgba(255, 106, 193, 0.22));
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.26);
+      background: linear-gradient(120deg, rgba(255, 106, 193, 0.32), rgba(124, 212, 255, 0.28));
+      color: #06081b;
+      border-color: rgba(255, 255, 255, 0.6);
     }
 
     .hero {
@@ -181,8 +194,8 @@
       position: relative;
       overflow: hidden;
       border-radius: var(--radius);
-      background: linear-gradient(135deg, rgba(13, 17, 52, 0.95), rgba(19, 36, 92, 0.9));
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(124, 212, 255, 0.14));
+      border: 1px solid rgba(255, 255, 255, 0.2);
       box-shadow: var(--shadow);
       padding: 26px;
       display: grid;
@@ -196,8 +209,8 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1400&q=80') center/cover;
-      opacity: 0.38;
+      background: url('https://i.ibb.co/7J7c6sc7/8-EFCE980-98-FC-4-F4-F-A8-B8-DDF50-C7-A78-CF-4-5005-c.jpg') center/cover;
+      opacity: 0.45;
       z-index: 0;
       filter: saturate(1.2);
     }
@@ -264,14 +277,15 @@
 
     .hero-card {
       position: relative;
-      background: var(--card);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(124, 212, 255, 0.16));
+      border: 1px solid rgba(255, 255, 255, 0.22);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
       padding: 14px;
       display: flex;
       align-items: stretch;
+      isolation: isolate;
     }
 
     .hero-card img {
@@ -281,7 +295,13 @@
       object-fit: cover;
       height: 100%;
       min-height: 260px;
-      filter: saturate(1.1);
+      filter: saturate(1.2) contrast(1.05);
+      transform: scale(1.02);
+      transition: transform 0.6s ease;
+    }
+
+    .hero-card:hover img {
+      transform: scale(1.05);
     }
 
     .badge {
@@ -290,8 +310,8 @@
       left: 16px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(10, 13, 28, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(12, 16, 38, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -345,22 +365,22 @@
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 12px;
+      gap: 14px;
     }
 
     .price-card {
-      background: var(--card);
-      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: linear-gradient(155deg, rgba(255, 255, 255, 0.3), rgba(124, 212, 255, 0.3));
+      border: 1px solid rgba(255, 255, 255, 0.38);
       border-radius: var(--radius);
-      padding: 18px;
+      padding: 22px 18px 18px;
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
       position: relative;
       overflow: hidden;
       isolation: isolate;
-      min-height: 230px;
+      min-height: 240px;
       background-size: cover;
       background-position: center;
       transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
@@ -370,8 +390,9 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(170deg, rgba(8, 14, 34, 0.75), rgba(9, 15, 38, 0.45));
+      background: linear-gradient(175deg, rgba(255, 255, 255, 0.26), rgba(7, 10, 30, 0.42));
       z-index: 0;
+      pointer-events: none;
     }
 
     .price-card::after {
@@ -379,20 +400,22 @@
       position: absolute;
       inset: 1px;
       border-radius: calc(var(--radius) - 2px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.28);
       mix-blend-mode: screen;
-      opacity: 0.8;
+      opacity: 0.9;
       z-index: 0;
+      pointer-events: none;
     }
 
     .price-badge {
       position: absolute;
       top: 12px;
-      left: 12px;
+      right: 16px;
+      left: auto;
       padding: 6px 12px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255, 106, 193, 0.9), rgba(124, 212, 255, 0.9));
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: linear-gradient(135deg, rgba(255, 106, 193, 0.95), rgba(124, 212, 255, 0.95));
+      border: 1px solid rgba(255, 255, 255, 0.8);
       font-weight: 800;
       letter-spacing: 0.02em;
       color: #071028;
@@ -403,7 +426,7 @@
     .price-card:hover {
       transform: translateY(-6px) scale(1.01);
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-      border-color: rgba(255, 255, 255, 0.32);
+      border-color: rgba(255, 255, 255, 0.42);
     }
 
     .price-card h3,
@@ -418,7 +441,7 @@
       font-size: 1.25rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .price {
@@ -431,12 +454,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 10px;
+      padding: 7px 12px;
       border-radius: 999px;
-      background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(124, 212, 255, 0.25));
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.35), rgba(124, 212, 255, 0.35));
       color: #0b1029;
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-weight: 700;
+      font-size: 0.92rem;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
     }
 
     .price-card ul {
@@ -473,12 +497,23 @@
       background: var(--card);
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: var(--shadow);
-      transition: transform 0.4s ease;
-      animation: rise 0.9s ease forwards;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+      animation: rise 0.9s ease forwards, float 10s ease-in-out infinite alternate, glowShift 12s ease-in-out infinite;
+      isolation: isolate;
     }
 
     .gallery-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
+      filter: saturate(1.08);
+    }
+
+    .gallery-card:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .gallery-card:nth-child(3) {
+      animation-delay: 0.3s;
     }
 
     .gallery-card img {
@@ -486,7 +521,28 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: saturate(1.2);
+      filter: saturate(1.25);
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(124, 212, 255, 0.22), transparent 45%),
+        radial-gradient(circle at 70% 70%, rgba(255, 106, 193, 0.18), transparent 45%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+      z-index: 1;
+      transition: opacity 0.4s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-card:hover::after {
+      opacity: 1;
     }
 
     .contact-grid {
@@ -580,6 +636,12 @@
       }
     }
 
+    @keyframes glowShift {
+      0% { filter: drop-shadow(0 12px 30px rgba(124, 212, 255, 0.22)); }
+      50% { filter: drop-shadow(0 18px 40px rgba(255, 106, 193, 0.32)); }
+      100% { filter: drop-shadow(0 12px 30px rgba(124, 212, 255, 0.22)); }
+    }
+
     @keyframes glowPulse {
       0% { text-shadow: 0 0 0 rgba(255, 255, 255, 0.18); }
       50% { text-shadow: 0 4px 22px rgba(124, 212, 255, 0.6); }
@@ -651,7 +713,7 @@
     </div>
     <div class="hero-card fade-up delay-2">
       <div class="badge"><span class="glow-dot"></span>Night shoot available</div>
-      <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1400&q=80" alt="Car photography" />
+      <img src="https://i.ibb.co/1tSRJnPd/07-EB219-F-27-C9-47-C9-887-E-717-E611063-FD-4-5005-c.jpg" border="0" width="5px" lenght="10px"></a>" alt="Car photography" />
     </div>
   </section>
 
@@ -668,82 +730,82 @@
 
   <section id="pricing" class="section fade-up delay-2">
     <h2>Signature packages</h2>
-    <p class="subtitle">Six fast picks. Custom add-ons available anytime.</p>
+    <p class="subtitle">Six quick picks tuned for light, color, and speed.</p>
     <div class="pricing-grid">
-      <div class="price-card popular" style="background-image: url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80');">
+      <div class="price-card popular" style="background-image: url('https://i.ibb.co/Y4GSR8KB/33-AC0-C3-B-E934-4961-8-AB6-E8-B67-CADAB0-D-4-5005-c.jpg');">
         <div class="price-badge">Most popular</div>
-        <h3>Night Glow</h3>
-        <div class="price">$349</div>
-        <div class="price-meta">Neon + light painting</div>
+        <h3>Neon Burst</h3>
+        <div class="price">$360</div>
+        <div class="price-meta">Night drama • 60 min</div>
         <ul>
-          <li>45 min downtown</li>
-          <li>Neon + light painting</li>
-          <li>12 finished edits</li>
+          <li>City lights + light painting</li>
+          <li>14 luminous edits</li>
+          <li>Delivery in 72 hrs</li>
         </ul>
         <div class="price-actions">
           <button class="btn btn-primary">Book now</button>
         </div>
       </div>
-      <div class="price-card" style="background-image: url('https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80');">
-        <h3>Urban Quick</h3>
-        <div class="price">$199</div>
-        <div class="price-meta">City set • 30 min</div>
+      <div class="price-card" style="background-image: url('https://i.ibb.co/YTj65Qr3/BF9051-C5-4-AED-47-D5-8-F9-C-BA846-A2-C8-F1-A-4-5005-c.jpg');">
+        <h3>Cruise Lite</h3>
+        <div class="price">$210</div>
+        <div class="price-meta">Downtown • 40 min</div>
         <ul>
-          <li>One hero location</li>
-          <li>5 cinematic edits</li>
-          <li>Delivery in 72 hrs</li>
+          <li>One sleek location</li>
+          <li>7 polished edits</li>
+          <li>Proofs in 48 hrs</li>
         </ul>
         <div class="price-actions">
           <button class="btn btn-secondary">Book now</button>
         </div>
       </div>
-      <div class="price-card" style="background-image: url('https://images.unsplash.com/photo-1502877828070-33b167ad6860?auto=format&fit=crop&w=1200&q=80');">
-        <h3>Track Day</h3>
-        <div class="price">$499</div>
+      <div class="price-card" style="background-image: url('https://i.ibb.co/21TSjT0G/6-ACFD721-3-F35-4-EEB-B5-D0-0-C6-D7-A3-D8-DF4-4-5005-c.jpg');">
+        <h3>Coastal Blue</h3>
+        <div class="price">$260</div>
+        <div class="price-meta">Sunset • 50 min</div>
+        <ul>
+          <li>Golden hour shoreline</li>
+          <li>10 warm edits</li>
+          <li>Optional drone add-on</li>
+        </ul>
+        <div class="price-actions">
+          <button class="btn btn-secondary">Book now</button>
+        </div>
+      </div>
+      <div class="price-card" style="background-image: url('https://i.ibb.co/0jtQTzJ8/B31-D3708-F996-48-FF-8-C05-BD1-CBDD125-FB-4-5005-c.jpg');">
+        <h3>Studio Mirror</h3>
+        <div class="price">$420</div>
+        <div class="price-meta">Glass + detail</div>
+        <ul>
+          <li>Styled studio lighting</li>
+          <li>Detail + hero angles</li>
+          <li>16 retouched edits</li>
+        </ul>
+        <div class="price-actions">
+          <button class="btn btn-secondary">Book now</button>
+        </div>
+      </div>
+      <div class="price-card" style="background-image: url('https://i.ibb.co/Nn9q91XM/774-BE14-E-6-CCE-4-C4-C-AF7-D-24-BEFEE49-F9-B-4-5005-c.jpg');">
+        <h3>Track Pulse</h3>
+        <div class="price">$560</div>
         <div class="price-meta">Action + pit lane</div>
         <ul>
-          <li>2 hours on track</li>
-          <li>Rolling + static mix</li>
-          <li>18 performance edits</li>
+          <li>90 mins of rollers</li>
+          <li>Performance + pit detail</li>
+          <li>18 dynamic edits</li>
         </ul>
         <div class="price-actions">
           <button class="btn btn-secondary">Book now</button>
         </div>
       </div>
-      <div class="price-card" style="background-image: url('https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=1200&q=80');">
-        <h3>Collector</h3>
-        <div class="price">$650</div>
-        <div class="price-meta">Garage + studio vibe</div>
+      <div class="price-card" style="background-image: url('https://i.ibb.co/RpstvjnG/17684-D07-3-CFF-413-F-9-A14-0-DDC7-E1-E80-AC-4-5005-c.jpg');">
+        <h3>Brand Legend</h3>
+        <div class="price">$880</div>
+        <div class="price-meta">Full story • Half-day</div>
         <ul>
-          <li>Styled in your garage</li>
-          <li>Studio-grade lighting</li>
-          <li>20 retouched edits</li>
-        </ul>
-        <div class="price-actions">
-          <button class="btn btn-secondary">Book now</button>
-        </div>
-      </div>
-      <div class="price-card" style="background-image: url('https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=80');">
-        <h3>Sunset Cruise</h3>
-        <div class="price">$279</div>
-        <div class="price-meta">Golden hour glow</div>
-        <ul>
-          <li>Sunset coast location</li>
-          <li>10 warm edits</li>
-          <li>Drone optional</li>
-        </ul>
-        <div class="price-actions">
-          <button class="btn btn-secondary">Book now</button>
-        </div>
-      </div>
-      <div class="price-card" style="background-image: url('https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1200&q=80');">
-        <h3>Showcase</h3>
-        <div class="price">$820</div>
-        <div class="price-meta">Full brand story</div>
-        <ul>
-          <li>Half-day multi-stop</li>
-          <li>30 polished edits</li>
-          <li>Short social reel</li>
+          <li>Three locations + rollers</li>
+          <li>30 luxe edits + social reel</li>
+          <li>Creative direction included</li>
         </ul>
         <div class="price-actions">
           <button class="btn btn-secondary">Book now</button>
@@ -759,9 +821,9 @@
     <h2>Gallery highlights</h2>
     <p class="subtitle">Chrome, motion, and color that stop the scroll.</p>
     <div class="gallery-grid">
-      <div class="gallery-card"><img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80" alt="Car closeup" /></div>
-      <div class="gallery-card"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80" alt="Car in garage" /></div>
-      <div class="gallery-card"><img src="https://images.unsplash.com/photo-1502877828070-33b167ad6860?auto=format&fit=crop&w=1200&q=80" alt="Car racing" /></div>
+      <div class="gallery-card"><img src="https://i.ibb.co/7J7c6sc7/8-EFCE980-98-FC-4-F4-F-A8-B8-DDF50-C7-A78-CF-4-5005-c.jpg" alt="Car closeup" /></div>
+      <div class="gallery-card"><img src="https://i.ibb.co/bMp8nhgV/42671589-5-FE5-4-B7-D-80-D0-C0-CFD35-F0-EAE-4-5005-c.jpg" alt="Car in garage" /></div>
+      <div class="gallery-card"><img src="https://i.ibb.co/21QvRPLn/61-E7-AEAF-C346-4-DFE-9646-FDB063149-F1-D-4-5005-c.jpg" alt="Car racing" /></div>
     </div>
   </section>
 
