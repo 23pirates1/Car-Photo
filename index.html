@@ -1,3 +1,7 @@
+
++942
+-0
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +42,8 @@
       scroll-behavior: smooth;
       line-height: 1.6;
       min-height: 100vh;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
     header {
@@ -291,6 +297,21 @@
       --hero-img-min-height: 200px;
     }
 
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      inset: -35% 15% auto -20%;
+      width: 60%;
+      height: 140%;
+      background: linear-gradient(125deg, rgba(255, 255, 255, 0.28), rgba(124, 212, 255, 0.18));
+      mix-blend-mode: screen;
+      filter: blur(6px);
+      transform: skewX(-18deg);
+      opacity: 0.22;
+      pointer-events: none;
+      animation: lightSweep 10s ease-in-out infinite;
+    }
+
     .hero-card img {
       width: var(--hero-img-width);
       height: 250px;
@@ -389,6 +410,11 @@
       transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     }
 
+    .price-card::before,
+    .price-card::after {
+      transition: opacity 0.35s ease;
+    }
+
     .price-card::before {
       content: '';
       position: absolute;
@@ -430,6 +456,12 @@
       transform: translateY(-6px) scale(1.01);
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
       border-color: rgba(255, 255, 255, 0.42);
+      filter: saturate(1.02);
+    }
+
+    .price-card:active {
+      transform: translateY(-2px) scale(0.995);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.45);
     }
 
     .price-card h3,
@@ -508,6 +540,20 @@
       isolation: isolate;
     }
 
+    .gallery-card::before {
+      content: '';
+      position: absolute;
+      inset: -20% 10% auto -15%;
+      width: 55%;
+      height: 140%;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.22), rgba(124, 212, 255, 0.18));
+      mix-blend-mode: screen;
+      opacity: 0.18;
+      transform: skewX(-16deg);
+      animation: lightSweep 11s ease-in-out infinite;
+      pointer-events: none;
+    }
+
     .gallery-card:hover {
       transform: translateY(-6px) scale(1.01);
       box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
@@ -550,6 +596,10 @@
 
     .gallery-card:hover::after {
       opacity: 1;
+    }
+
+    .gallery-card:active {
+      transform: translateY(-2px) scale(0.995);
     }
 
     .contact-grid {
@@ -661,6 +711,14 @@
       100% { text-shadow: 0 0 0 rgba(255, 255, 255, 0.18); }
     }
 
+    @keyframes lightSweep {
+      0% { transform: translateX(-30%) skewX(-18deg); opacity: 0; }
+      10% { opacity: 0.25; }
+      40% { transform: translateX(90%) skewX(-18deg); opacity: 0.3; }
+      60% { opacity: 0.22; }
+      100% { transform: translateX(140%) skewX(-18deg); opacity: 0; }
+    }
+
     .fade-up {
       opacity: 0;
       transform: translateY(20px);
@@ -690,6 +748,21 @@
       nav {
         gap: 10px;
         justify-content: flex-start;
+      }
+    }
+
+    @media (hover: none) {
+      .btn:active,
+      .price-card:active,
+      .gallery-card:active,
+      .hero-card:active {
+        transform: translateY(-2px) scale(0.995);
+        box-shadow: 0 16px 38px rgba(0, 0, 0, 0.45);
+      }
+
+      nav a:active,
+      .menu summary:active {
+        transform: translateY(-1px);
       }
     }
   </style>
