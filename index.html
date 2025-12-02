@@ -328,14 +328,14 @@
     .story-card {
       position: relative;
       background:
-        linear-gradient(145deg, rgba(13, 19, 52, 0.95), rgba(11, 17, 44, 0.92)),
-        linear-gradient(145deg, rgba(255, 106, 193, 0.2), rgba(124, 212, 255, 0.2));
-      border: 2px solid rgba(255, 255, 255, 0.28);
-      border-radius: calc(var(--radius) + 6px);
-      padding: 30px;
-      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        linear-gradient(145deg, rgba(12, 17, 44, 0.94), rgba(9, 15, 38, 0.94)),
+        linear-gradient(145deg, rgba(255, 106, 193, 0.26), rgba(124, 212, 255, 0.26));
+      border: 2.2px solid rgba(255, 255, 255, 0.34);
+      border-radius: calc(var(--radius) + 8px);
+      padding: 34px;
+      box-shadow: 0 30px 82px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
       display: grid;
-      gap: 16px;
+      gap: 18px;
       overflow: hidden;
       isolation: isolate;
       cursor: default;
@@ -347,10 +347,11 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(150deg, rgba(8, 12, 30, 0.7), rgba(8, 15, 38, 0.88)),
+        linear-gradient(150deg, rgba(8, 12, 30, 0.6), rgba(8, 15, 38, 0.78)),
         url('https://i.ibb.co/5WB0xRFr/IMG-3285.jpg') center/cover;
       opacity: 1;
       z-index: 0;
+      filter: brightness(1.18) saturate(1.08);
     }
 
     .story-header {
@@ -359,21 +360,21 @@
       position: relative;
       z-index: 1;
       color: #fdfdff;
-      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+      text-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
     }
 
     .story-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 12px;
-      border-radius: 12px;
-      background: linear-gradient(120deg, rgba(255, 106, 193, 0.48), rgba(124, 212, 255, 0.48));
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      color: #0b1029;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 12px 28px rgba(0, 0, 0, 0.35);
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: linear-gradient(120deg, rgba(255, 156, 220, 0.92), rgba(140, 225, 255, 0.94));
+      border: 1.4px solid rgba(255, 255, 255, 0.52);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #041026;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.96), 0 16px 36px rgba(0, 0, 0, 0.44);
       width: fit-content;
       text-transform: uppercase;
     }
@@ -402,19 +403,19 @@
 
     .story-metrics {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px;
-      margin-top: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
       position: relative;
       z-index: 1;
     }
 
     .metric {
-      background: linear-gradient(155deg, rgba(255, 255, 255, 0.2), rgba(124, 212, 255, 0.2));
-      border: 1px solid rgba(255, 255, 255, 0.32);
+      background: linear-gradient(155deg, rgba(255, 255, 255, 0.24), rgba(124, 212, 255, 0.24));
+      border: 1.4px solid rgba(255, 255, 255, 0.35);
       border-radius: 16px;
-      padding: 16px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 14px 36px rgba(0, 0, 0, 0.38);
+      padding: 18px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 16px 42px rgba(0, 0, 0, 0.4);
       display: grid;
       gap: 6px;
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -925,28 +926,20 @@
         <h2>Every Car Has A Story. We Capture It</h2>
         <p class="subtitle">Fast cars deserve faster visuals, with light that feels alive.</p>
       </div>
-      <div class="story-content">
-        <div class="pill-grid">
-          <div class="pill"><span class="glow-dot"></span> High quality personal films</div>
-          <div class="pill"><span class="glow-dot"></span> Rolling + static hero shots</div>
-          <div class="pill"><span class="glow-dot"></span> Framed keepsakes included</div>
-          <div class="pill"><span class="glow-dot"></span> Same-week delivery</div>
-        </div>
-        <div class="story-metrics">
-          <div class="metric">
-            <div class="metric-value">250+</div>
-            <div class="metric-label">Shoots delivered</div>
+        <div class="story-content">
+          <div class="pill-grid">
+            <div class="pill"><span class="glow-dot"></span> High quality personal films</div>
+            <div class="pill"><span class="glow-dot"></span> Rolling + static hero shots</div>
+            <div class="pill"><span class="glow-dot"></span> Framed keepsakes included</div>
+            <div class="pill"><span class="glow-dot"></span> Same-week delivery</div>
           </div>
-          <div class="metric">
-            <div class="metric-value">2x</div>
-            <div class="metric-label">Studio + on-road lighting</div>
-          </div>
-          <div class="metric">
-            <div class="metric-value">99%</div>
-            <div class="metric-label">Booked on mobile</div>
+          <div class="story-metrics">
+            <div class="metric">
+              <div class="metric-value">250+</div>
+              <div class="metric-label">Shoots delivered</div>
+            </div>
           </div>
         </div>
-      </div>
     </div>
   </section>
 
