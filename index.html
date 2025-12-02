@@ -327,14 +327,15 @@
 
     .story-card {
       position: relative;
-      background: linear-gradient(145deg, rgba(255, 106, 193, 0.16), rgba(124, 212, 255, 0.16)),
-        linear-gradient(140deg, rgba(7, 10, 28, 0.9), rgba(16, 28, 66, 0.9));
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: calc(var(--radius) + 4px);
-      padding: 22px;
-      box-shadow: var(--shadow);
+      background:
+        linear-gradient(145deg, rgba(13, 19, 52, 0.95), rgba(11, 17, 44, 0.92)),
+        linear-gradient(145deg, rgba(255, 106, 193, 0.2), rgba(124, 212, 255, 0.2));
+      border: 2px solid rgba(255, 255, 255, 0.28);
+      border-radius: calc(var(--radius) + 6px);
+      padding: 30px;
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.18);
       display: grid;
-      gap: 14px;
+      gap: 16px;
       overflow: hidden;
       isolation: isolate;
       cursor: default;
@@ -346,9 +347,9 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(140deg, rgba(255, 255, 255, 0.06), rgba(10, 16, 36, 0.7)),
-        url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80') center/cover;
-      opacity: 0.95;
+        linear-gradient(150deg, rgba(8, 12, 30, 0.7), rgba(8, 15, 38, 0.88)),
+        url('https://i.ibb.co/5WB0xRFr/IMG-3285.jpg') center/cover;
+      opacity: 1;
       z-index: 0;
     }
 
@@ -379,7 +380,7 @@
 
     .story-content {
       display: grid;
-      gap: 14px;
+      gap: 16px;
       position: relative;
       z-index: 1;
       color: #f7fbff;
@@ -401,21 +402,21 @@
 
     .story-metrics {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-      margin-top: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 10px;
       position: relative;
       z-index: 1;
     }
 
     .metric {
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(124, 212, 255, 0.16));
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      border-radius: 14px;
-      padding: 12px 14px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      background: linear-gradient(155deg, rgba(255, 255, 255, 0.2), rgba(124, 212, 255, 0.2));
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 14px 36px rgba(0, 0, 0, 0.38);
       display: grid;
-      gap: 4px;
+      gap: 6px;
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       cursor: pointer;
     }
@@ -506,10 +507,10 @@
     }
 
     .pill {
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(124, 212, 255, 0.16));
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(124, 212, 255, 0.2));
+      border: 1px solid rgba(255, 255, 255, 0.26);
       color: #fdfdff;
       font-weight: 700;
       display: flex;
@@ -937,12 +938,12 @@
             <div class="metric-label">Shoots delivered</div>
           </div>
           <div class="metric">
-            <div class="metric-value">48 hrs</div>
-            <div class="metric-label">First look previews</div>
+            <div class="metric-value">2x</div>
+            <div class="metric-label">Studio + on-road lighting</div>
           </div>
           <div class="metric">
-            <div class="metric-value">4K</div>
-            <div class="metric-label">Cinematic edits</div>
+            <div class="metric-value">99%</div>
+            <div class="metric-label">Booked on mobile</div>
           </div>
         </div>
       </div>
