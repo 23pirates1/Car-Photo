@@ -282,19 +282,22 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
-      padding: 14px;
+      padding: 3px;
       display: flex;
       align-items: stretch;
       isolation: isolate;
+      --hero-img-width: 100%;
+      --hero-img-height: 240px;
+      --hero-img-min-height: 200px;
     }
 
     .hero-card img {
-      width: 100%;
+      width: var(--hero-img-width);
+      height: 250px;
+      min-height: var(--hero-img-min-height);
       border-radius: calc(var(--radius) - 6px);
       display: block;
       object-fit: cover;
-      height: 100%;
-      min-height: 260px;
       filter: saturate(1.2) contrast(1.05);
       transform: scale(1.02);
       transition: transform 0.6s ease;
@@ -490,10 +493,13 @@
     }
 
     .gallery-card {
+      --gallery-img-width: 100%;
+      --gallery-img-height: 180px;
+      --gallery-img-min-height: 160px;
       position: relative;
       border-radius: var(--radius);
       overflow: hidden;
-      min-height: 200px;
+      min-height: var(--gallery-img-min-height);
       background: var(--card);
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: var(--shadow);
@@ -517,8 +523,9 @@
     }
 
     .gallery-card img {
-      width: 100%;
-      height: 100%;
+      width: var(--gallery-img-width);
+      height: 300px;
+      min-height: var(--gallery-img-min-height);
       object-fit: cover;
       display: block;
       filter: saturate(1.25);
@@ -578,6 +585,12 @@
       color: #fff;
       font-size: 1rem;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #fff;
+      opacity: 0.9;
     }
 
     input:focus,
@@ -685,7 +698,7 @@
   <div class="floating-blur" style="top: 10%; left: 10%;"></div>
   <div class="floating-blur two"></div>
   <header>
-    <div class="brand"><span></span> DriveLight</div>
+    <div class="brand"><span></span> GrantsVision</div>
     <details class="menu">
       <summary>
         <div class="menu-icon">
@@ -704,8 +717,8 @@
 
   <section class="hero">
     <div class="hero-text fade-up">
-      <h1>DriveLight</h1>
-      <div class="hero-tagline">Neon car stories, shot bold.</div>
+      <h1>GrantsVision</h1>
+      <div class="hero-tagline">Performance Captured.</div>
       <div class="cta-row">
         <button class="btn btn-primary" onclick="document.querySelector('#pricing').scrollIntoView({behavior: 'smooth'});">Explore Packages</button>
         <button class="btn btn-secondary" onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'});">Book a Shoot</button>
@@ -713,7 +726,7 @@
     </div>
     <div class="hero-card fade-up delay-2">
       <div class="badge"><span class="glow-dot"></span>Night shoot available</div>
-      <img src="https://i.ibb.co/1tSRJnPd/07-EB219-F-27-C9-47-C9-887-E-717-E611063-FD-4-5005-c.jpg" border="0" width="5px" lenght="10px"></a>" alt="Car photography" />
+      <img src="https://i.ibb.co/1tSRJnPd/07-EB219-F-27-C9-47-C9-887-E-717-E611063-FD-4-5005-c.jpg" alt="Car photography" />
     </div>
   </section>
 
